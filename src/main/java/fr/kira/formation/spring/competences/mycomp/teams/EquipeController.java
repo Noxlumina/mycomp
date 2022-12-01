@@ -11,6 +11,9 @@ public class EquipeController {
 
     private EquipeService equipeService;
 
+    public EquipeController(EquipeService equipeService) {
+        this.equipeService = equipeService;
+    }
 
     @GetMapping
     public List<Equipe> findAll() {
@@ -30,6 +33,18 @@ public class EquipeController {
     @DeleteMapping("{id}")
     public void deleteById(@PathVariable String id) {
         equipeService.deleteById(id);
+    }
+
+    @PutMapping("{idEquipe}/membres/{idMembre}")
+    public Equipe ajoutMembre(@PathVariable String idEquipe,@PathVariable String idMembre)
+    {
+        return this.equipeService.ajoutMembre(idEquipe,idMembre);
+    }
+
+    @DeleteMapping("{idEquipe}/membres/{idMembre}")
+    public Equipe retirerMembre(@PathVariable String idEquipe,@PathVariable String idMembre)
+    {
+        return equipeService.retirerMembre(idEquipe,idMembre);
     }
 
 }

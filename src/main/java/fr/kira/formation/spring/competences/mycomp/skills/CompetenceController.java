@@ -13,6 +13,9 @@ import java.util.Optional;
 @RequestMapping("/competences")
 public class CompetenceController {
 
+    public CompetenceController(CompetenceService competenceService) {
+        this.competenceService = competenceService;
+    }
 
     private CompetenceService competenceService;
 
