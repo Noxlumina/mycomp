@@ -1,9 +1,8 @@
 package fr.kira.formation.spring.competences.mycomp.skills;
 
+import fr.kira.formation.spring.competences.mycomp.persons.Personne;
 import fr.kira.formation.spring.competences.mycomp.persons.PersonneService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,19 +18,26 @@ public class CompetenceController {
 
     private CompetenceService competenceService;
 
+
+    @GetMapping
     public List<Competence> findAll() {
         return competenceService.findAll();
     }
 
-    public Competence save(Competence entity) {
+    @PostMapping
+    public Competence save(@RequestBody Competence entity) {
         return competenceService.save(entity);
     }
 
-    public Competence findById(String id) {
+    @GetMapping("{id}")
+    public Competence findById(@PathVariable String id) {
         return competenceService.findById(id);
     }
 
-    public void deleteById(String id) {
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable String id) {
         competenceService.deleteById(id);
     }
+
+
 }

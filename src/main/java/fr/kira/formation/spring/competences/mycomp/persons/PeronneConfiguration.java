@@ -1,5 +1,6 @@
 package fr.kira.formation.spring.competences.mycomp.persons;
 
+import fr.kira.formation.spring.competences.mycomp.skills.CompetenceService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class PeronneConfiguration {
 
     @Bean
-    public PersonneService personneService(PersonneRepository personneRepository){
-        return new PersonneServiceImpl(personneRepository);
+    public PersonneService personneService(PersonneRepository personneRepository, CompetenceService competenceService){
+        return new PersonneServiceImpl(personneRepository,competenceService);
     }
 }

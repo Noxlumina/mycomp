@@ -10,4 +10,6 @@ public interface PersonneService {
     Personne findById(String id);
 
     void deleteById(String id);
+
+    Personne ajoutNiveauCompetence(String idPersonne,String idCompetence, Integer niveau);
 }

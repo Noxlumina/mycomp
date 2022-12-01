@@ -1,5 +1,6 @@
 package fr.kira.formation.spring.competences.mycomp.persons;
 
+import fr.kira.formation.spring.competences.mycomp.skills.Competence;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.List;
 public class PersonneController {
 
     private PersonneService personneService;
+    public PersonneController(PersonneService personneService) {
+        this.personneService = personneService;
+    }
+
 
     @GetMapping
     public List<Personne> findAll() {
@@ -31,7 +36,9 @@ public class PersonneController {
         personneService.deleteById(id);
     }
 
-    public PersonneController(PersonneService personneService) {
-        this.personneService = personneService;
+    @PutMapping("{idPersonne}/competence/{idCompetence}")
+    public Personne ajoutCompetence(@RequestBody Personne personne) {
+        return personneService.save(personne);
     }
+
 }
